@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Arboles", "Arboles\Arboles.vcxproj", "{23AF9CE4-AA2F-4DFA-8653-720A18EE3611}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23AF9CE4-AA2F-4DFA-8653-720A18EE3611}.Debug|x64.ActiveCfg = Debug|x64
+		{23AF9CE4-AA2F-4DFA-8653-720A18EE3611}.Debug|x64.Build.0 = Debug|x64
+		{23AF9CE4-AA2F-4DFA-8653-720A18EE3611}.Debug|x86.ActiveCfg = Debug|Win32
+		{23AF9CE4-AA2F-4DFA-8653-720A18EE3611}.Debug|x86.Build.0 = Debug|Win32
+		{23AF9CE4-AA2F-4DFA-8653-720A18EE3611}.Release|x64.ActiveCfg = Release|x64
+		{23AF9CE4-AA2F-4DFA-8653-720A18EE3611}.Release|x64.Build.0 = Release|x64
+		{23AF9CE4-AA2F-4DFA-8653-720A18EE3611}.Release|x86.ActiveCfg = Release|Win32
+		{23AF9CE4-AA2F-4DFA-8653-720A18EE3611}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {312F7AD4-FD6E-42FD-9365-52DA5F057C34}
+	EndGlobalSection
+EndGlobal
