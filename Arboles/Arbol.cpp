@@ -94,7 +94,7 @@ void Contador(Nodo* arbol,int Tipo)
         }
         else if (Tipo==2)
         {
-            contador = Contar_Nodos(arbol, contador);
+            Contar_Nodos(arbol, &contador);
             cout << "\n\n\tEl arbol cuenta con " << contador << " Nodos\n\n";
         }
     }
@@ -116,44 +116,121 @@ int Contar_Hojas(Nodo* arbol, int Contador)
     }
 }
 
-int Contar_Nodos(Nodo* arbol, int Contador)
+void Contar_Nodos(Nodo* arbol, int* Contador)
 {
-    if (arbol==NULL)
-    {
-        return Contador;
+    if (arbol == NULL) {
+        if (Contador == 0) {
+            cout << "\n\n\tArbol vacio\n\n";
+        }
     }
-    Contador = Contar_Nodos(arbol->Derecha, Contador+1);
-    Contador = Contar_Nodos(arbol->Izquierda, Contador);
-    return (Contador);
+        else
+        {
+        *Contador += 1;
+            Contar_Nodos(arbol->Izquierda,Contador);
+            Contar_Nodos(arbol->Derecha, Contador);
+        }
+
 }
 
 void Arbol_altura(Nodo* arbol)
 {
-    int contador = 0;
+    int contador;
 
     if (arbol == NULL) {
         cout << "\n\n\tArbol Vacio\n\n";
     }
     else
     {
-        contador = altura(arbol,0,1,0);
-        cout << "\n\n\tEl tamaño del arbol es de " << contador << " niveles\n\n";
+        contador = altura(arbol);
+        cout << "\n\n\tEl tamaño del arbol es de " << contador + 1 << " niveles\n\n";
     }
 }
 
-int altura(Nodo* arbol, int Altura, int j, int i)
+int altura(Nodo* arbol)
 {
-    if (arbol!=NULL)
+    if (arbol==NULL)
     {
-        i++;
-
-        if (i==j) {
-            j++;
-            Altura = j - 1;
-        return Altura;
-        }
-        Altura = altura(arbol->Izquierda, Altura, j, i);
-        Altura = altura(arbol->Derecha, Altura, j, i);
-        i--;
+        return  -1;
     }
+    else
+    {
+        int AltIzq, AltDer;
+
+            AltDer = altura(arbol->Derecha);
+            AltIzq = altura(arbol->Izquierda);
+
+            if (AltIzq > AltDer)
+                return AltIzq + 1;
+            else
+                return AltDer + 1;
+        
+    }
+}
+
+void Arbol_mayor(Nodo* arbol)
+{
+    if (arbol == NULL) {
+        cout << "\n\n\tArbol Vacio\n\n";
+    }
+    else
+    {
+        Nodo* mayor;
+        
+        mayor = Mayor(arbol);
+
+        cout << "El dato mas alto del arbol es " << mayor->Dato << endl<<endl;
+    }
+}
+
+Nodo* Mayor(Nodo* arbol)
+{
+        return arbol->Derecha ? Mayor(arbol->Derecha) : arbol;
+    
+}
+
+void Borrar_menor(Nodo*& arbol, bool es_raiz)
+{
+    if (arbol == NULL && es_raiz == true)
+    {
+        cout << "\n\n\tArbol Vacio\n\n";
+    }
+    else
+    {
+        Nodo* El_Menor = Menor(arbol);
+
+        if (arbol == NULL) return;
+
+        if (El_Menor->Dato < arbol->Dato) {
+            Borrar_menor(arbol->Izquierda, El_Menor);
+        }
+        else if (El_Menor->Dato > arbol->Dato) {
+            Borrar_menor(arbol->Derecha, El_Menor);
+        }
+
+        else
+        {
+            Nodo* p = arbol;
+            arbol = unirArbol(arbol->Izquierda, arbol->Derecha);
+
+            cout << "\n\n\t Queda eliminado el nodo " << p->Dato << endl;
+            free(p);
+        }
+        
+    }
+}
+
+Nodo* Menor(Nodo* arbol)
+{
+    return arbol->Izquierda ? Menor(arbol->Izquierda) : arbol;
+}
+
+Nodo* unirArbol(Nodo* izq, Nodo* der)
+{
+    if (izq == NULL) return der;
+    if (der == NULL) return izq;
+
+    Nodo* centro = unirArbol(izq->Derecha, der->Izquierda);
+    izq->Derecha = centro;
+    der->Izquierda = izq;
+    return der;
 }
