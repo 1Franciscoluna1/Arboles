@@ -36,7 +36,8 @@ int main() {
 
 		case 2:
 			MostrarArbol_Vistachida(arbol,0);
-		//	MostrarArbol_Vistapreorden(arbol, *&contador);
+			cout << "\n\n\t";
+		//	MostrarArbol_Vistapreorden(arbol, 0);
 			cout << "\n\n";
 			system("pause");
 			break;

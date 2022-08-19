@@ -35,6 +35,7 @@ void InsertarNodo(Nodo*& arbol, int Numero)
     else
     {
         cout << "\n\n\tEl dato ya esta dentro del arbol\n\n";
+        system("pause");
     }
 }
 
